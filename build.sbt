@@ -11,11 +11,6 @@ lazy val spark = Seq(
 ).map("org.apache.spark" %% _ % "1.6.0" % "provided")
 libraryDependencies ++= spark
 
-// lazy val dl4j = Seq(
-//   "deeplearning4j-zoo"
-// ).map("org.deeplearning4j" %% _ % "0.9.1")
-// libraryDependencies ++= dl4j
-
 libraryDependencies ++= Seq(
   "args4j" % "args4j" % "2.33",
   "org.deeplearning4j" % "deeplearning4j-core" % "0.9.1",
@@ -23,13 +18,10 @@ libraryDependencies ++= Seq(
   "org.nd4j" % "nd4j-native-platform" % "0.9.1"
 
 )
-// libraryDependencies += "org.deeplearning4j" % "deeplearning4j-core" % "0.9.1"
 
 assemblyMergeStrategy in assembly := {
   case PathList("META-INF", xs @ _*) => MergeStrategy.discard
   case x => MergeStrategy.first
-    // val oldStrategy = (assemblyMergeStrategy in assembly).value
-    // oldStrategy(x)
 }
 
 assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false)
